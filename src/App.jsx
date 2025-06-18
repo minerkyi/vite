@@ -13,10 +13,10 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/vite'>
       <Routes>
-        <Route path="/vite/aa" element={<Index />}/>
-        <Route path="/vite/products" element={<Products />}/>
+        <Route path="/" element={<Index />}/>
+        <Route path="/products" element={<Products />}/>
       </Routes>
     </BrowserRouter>
   )
