@@ -7,7 +7,7 @@ function App() {
   function Index() {
     return (
       <>
-        <h1>Hello World</h1>
+        <h1>Index</h1>
       </>
     );
   }
@@ -15,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/vite/" element={<Index />}/>
+        <Route path="/vite/aa" element={<Index />}/>
         <Route path="/vite/products" element={<Products />}/>
       </Routes>
     </BrowserRouter>
