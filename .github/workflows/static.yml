@@ -1,32 +1,32 @@
-name: Deploy to GitHub Pages
+name: CI
 
 on:
   push:
-    branches:
-      - main  # 또는 배포하고자 하는 브랜치
+    branches: [main]
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js ⚙️
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm install
+      - run: npm install react-router-dom
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
-          node-version: '18'
+          path: "./dist"
 
-      - name: Install dependencies 📦
-        run: npm install
-
-      - name: Build 🔨
-        run: npm run build
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build
-          CLEAN: true
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
