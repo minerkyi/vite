@@ -5,12 +5,7 @@ import Products from './pages/products/Products';
 
 function App() {
   return (
-    <BrowserRouter basename='/vite'>
-      <Routes>
-        <Route path="/" element={<Index />}/>
-        <Route path="/products" element={<Products />}/>
-      </Routes>
-    </BrowserRouter>
+    <p>index</p>
   )
 }
 
