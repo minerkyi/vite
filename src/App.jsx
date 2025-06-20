@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Index />}/>
         <Route path="/products" element={<Products />}/>
+        <Route path="*" element={<Products />}/>
       </Routes>
     </BrowserRouter>
   )
