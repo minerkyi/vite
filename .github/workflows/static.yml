@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm install
+      #- run: npm install
       #- run: npm install react-router-dom
       #- run: npm i styled-reset      
       - run: npm run build
